@@ -20,7 +20,7 @@ body {
         ".";
     width: 100%;
     padding: 20px;
-    gap: 15px 40px;
+    gap: 25px 40px;
 }
     .container > .global-actions {
         display: inline-block;
@@ -29,8 +29,65 @@ body {
     .container > .form {
         display: inline-block;
         grid-area: newTodo;
-        background-color: yellow;
     }
+        .container > .form > fieldset {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+            border: none;
+        }
+            .form > fieldset > label {
+                display: inline-block;
+                width: 100%;
+            }
+            .form > fieldset > textarea {
+                display: inline-block;
+                width: 100%;
+                min-height: 95px;
+                height: 95px;
+                max-height: 270px;
+                padding: 10px;
+                line-height: 25px;
+                font-size: 20px;
+                resize: vertical;
+            }
+            .form > fieldset > input {
+                display: inline-block;
+                width: 100%;
+                padding: 10px;
+                line-height: 25px;
+                font-size: 20px;
+            }
+        .container > .form > .actions {
+            display: inline-block;
+            width: 100%;
+        }
+            .form > .actions > .btn {
+                display: inline-block;
+                padding: 10px 15px;
+                margin-right: 20px;
+                border: 1px solid #ccc;
+                background-color: #36f;
+                border-radius: 4px;
+                color: #fff;
+                line-height: 20px;
+                font-size: 18px;
+                cursor: pointer;
+            }
+                .form > .actions > .btn:hover {
+                    display: inline-block;
+                    box-shadow: 0 2px 8px #0005;
+                }
+                .form > .actions > .btn.add {
+                }
+                    .form > .actions > .btn.add:hover {
+                    }
+                .form > .actions > .btn.clear {
+                    background-color: #ccc;
+                    color: #000;
+                }
+                    .form > .actions > .btn.clear:hover {
+                    }
     .container > .item {
         display: inline-block;
         padding: 20px 20px 10px;
