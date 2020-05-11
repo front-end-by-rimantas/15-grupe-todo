@@ -8,8 +8,22 @@
 </head>
 <body>
     <div id="todo" class="container">
+        <div class="global-actions">
+            <div class="action remove">Remove all</div>
+        </div>
         <form class="form">
-            NEW TASK FORM
+            <fieldset>
+                <label for="task">Task</label>
+                <textarea name="task"></textarea>
+            </fieldset>
+            <fieldset>
+                <label for="deadline">Deadline</label>
+                <input type="text" name="deadline" placeholder="YYYY-MM-DD HH-MM">
+            </fieldset>
+            <div class="actions">
+                <div class="btn add">Add new</div>
+                <div class="btn clear">Clear form</div>
+            </div>
         </form>
     </div>
     
