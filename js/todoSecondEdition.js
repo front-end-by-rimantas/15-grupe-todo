@@ -138,5 +138,16 @@ console.log('bevarde funkcija atimtis:', atimtis(8, 3));
 
 // const daugyba = function(a, b) { return a*b; }
 const daugyba = (a, b) => a*b;
-
 console.log('arrow function daugyba:', daugyba(3, 16));
+
+
+// don't try this at home :(
+const sudekIrAtimk = (a, b, c) => {
+    const sudek = (e, f) => e + f;
+    const atimk = (g, h) => g - h;
+
+    return atimk(sudek(a, b), c);
+};
+console.log('sudekIrAtimk:', sudekIrAtimk(4, 6, 3));
+
+
