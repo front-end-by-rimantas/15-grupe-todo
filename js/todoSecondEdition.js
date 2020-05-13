@@ -1,4 +1,6 @@
 "use strict";
+let todo_id = 0;
+let todo_list = [];
 
 const DOMcontainer = document.querySelector('.container');
 
@@ -104,11 +106,11 @@ function removeTodo( todoIndex ) {
     }
     
     todo_list = leftTodos;
+    updateMemory();
     return;
 }
 
 function createNewTodo() {
-    todo_id++;
     let newTodo = {
         id: todo_id,
         description: DOMtaskTextarea.value.trim(),
@@ -128,7 +130,39 @@ function createNewTodo() {
     
     todo_list.push( newTodo );
     renderTodoItem( newTodo );
+    todo_id++;
+    updateMemory();
 }
+
+/*******************************
+    MEMORY MANAGEMENT
+*******************************/
+
+function memoryManagement() {
+    if ( localStorage.getItem('todo_id') ) {
+        // jei yra, tai is localStorage istraukiu esama reiksme ir ja priskiriu todo_id
+        todo_id = JSON.parse( localStorage.getItem('todo_id') );
+    } else {
+        // jei localStorage nera todo_id, tai ji sukuriu ir priskiriu reiksme 0
+        localStorage.setItem('todo_id', JSON.stringify(todo_id));
+    }
+
+    
+    if ( localStorage.getItem('todo_list') ) {
+        // jei yra, tai is localStorage istraukiu esama reiksme ir ja priskiriu todo_list
+        todo_list = JSON.parse( localStorage.getItem('todo_list') );
+    } else {
+        // jei localStorage nera todo_list, tai ji sukuriu ir priskiriu reiksme []
+        localStorage.setItem('todo_list', JSON.stringify(todo_list));
+    }
+}
+
+function updateMemory() {
+    localStorage.setItem('todo_id', JSON.stringify(todo_id));
+    localStorage.setItem('todo_list', JSON.stringify(todo_list));
+}
+
+memoryManagement();
 
 /*******************************
     GENERATE CONTENT
@@ -143,4 +177,4 @@ DOMdeadlineInput.value = formatedDate( 86400000 );
 
 BTNremoveAll.addEventListener('click', removeAllTodos);
 
-DOMformAdd.addEventListener('click', createNewTodo)
+DOMformAdd.addEventListener('click', createNewTodo);
