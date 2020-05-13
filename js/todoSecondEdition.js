@@ -85,7 +85,7 @@ function formatedDate( deltaTime = 0 ) {
 }
 
 function removeAllTodos() {
-    for ( let i=4-1; i>=0; i-- ) {
+    for ( let i=DOMitems.length-1; i>=0; i-- ) {
         removeTodo(i);
     }
 }
@@ -107,6 +107,29 @@ function removeTodo( todoIndex ) {
     return;
 }
 
+function createNewTodo() {
+    todo_id++;
+    let newTodo = {
+        id: todo_id,
+        description: DOMtaskTextarea.value.trim(),
+        created_on: formatedDate(),
+        deadline: DOMdeadlineInput.value.trim(),
+        status: 'todo'
+    };
+
+    if ( newTodo.description.length === 0 ) {
+        return alert('ERROR: tuscias aprasymas');
+    }
+    
+    if ( newTodo.deadline.length > 0 &&
+        (new Date(newTodo.deadline)).toString() === 'Invalid Date' ) {
+        return alert('ERROR: nevalidus deadline');
+    }
+    
+    todo_list.push( newTodo );
+    renderTodoItem( newTodo );
+}
+
 /*******************************
     GENERATE CONTENT
 *******************************/
@@ -120,34 +143,4 @@ DOMdeadlineInput.value = formatedDate( 86400000 );
 
 BTNremoveAll.addEventListener('click', removeAllTodos);
 
-
-
-
-
-function suma(a, b) {
-    return a+b;
-}
-console.log('function suma:', suma(2, 5));
-
-
-const atimtis = function(a, b) {
-    return a-b;
-}
-console.log('bevarde funkcija atimtis:', atimtis(8, 3));
-
-
-// const daugyba = function(a, b) { return a*b; }
-const daugyba = (a, b) => a*b;
-console.log('arrow function daugyba:', daugyba(3, 16));
-
-
-// don't try this at home :(
-const sudekIrAtimk = (a, b, c) => {
-    const sudek = (e, f) => e + f;
-    const atimk = (g, h) => g - h;
-
-    return atimk(sudek(a, b), c);
-};
-console.log('sudekIrAtimk:', sudekIrAtimk(4, 6, 3));
-
-
+DOMformAdd.addEventListener('click', createNewTodo)
