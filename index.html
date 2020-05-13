@@ -16,6 +16,14 @@
                 <label for="task">Task</label>
                 <textarea name="task"></textarea>
             </fieldset>
+            <fieldset class="status">
+                <label for="status">Status</label>
+                <div class="switch" data-selected="todo">
+                    <div class="option" data-option="todo">Todo</div>
+                    <div class="option" data-option="progress">In progress</div>
+                    <div class="option" data-option="done">Done</div>
+                </div>
+            </fieldset>
             <fieldset>
                 <label for="deadline">Deadline</label>
                 <input type="text" name="deadline" placeholder="YYYY-MM-DD HH-MM">
@@ -23,6 +31,8 @@
             <div class="actions">
                 <div class="btn add">Add new</div>
                 <div class="btn clear">Clear form</div>
+                <div class="btn save">Save</div>
+                <div class="btn cancel">Cancel</div>
             </div>
         </form>
     </div>

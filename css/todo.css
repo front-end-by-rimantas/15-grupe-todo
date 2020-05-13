@@ -58,6 +58,33 @@ body {
                 line-height: 25px;
                 font-size: 20px;
             }
+            .form > fieldset.status {
+                display: none;
+            }
+            .switch {
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+                .switch > .option {
+                    display: inline-block;
+                    padding: 10px;
+                    float: left;
+                    line-height: 25px;
+                    font-size: 20px;
+                    background-color: #fff;
+                    color: #333;
+                    cursor: pointer;
+                }
+                    .switch > .option:hover {
+                        background-color: #eee;
+                    }
+                    .switch[data-selected="todo"] > .option[data-option="todo"],
+                    .switch[data-selected="progress"] > .option[data-option="progress"],
+                    .switch[data-selected="done"] > .option[data-option="done"] {
+                        background-color: #f93;
+                        color: #fff;
+                    }
         .container > .form > .actions {
             display: inline-block;
             width: 100%;
@@ -88,6 +115,21 @@ body {
                 }
                     .form > .actions > .btn.clear:hover {
                     }
+            .form > .actions > .btn.save,
+            .form > .actions > .btn.cancel {
+                display: none;
+            }
+        .form.editing > fieldset.status {
+            display: inline-block;
+        }
+        .form.editing > .actions > .btn.save,
+        .form.editing > .actions > .btn.cancel {
+            display: inline-block;
+        }
+        .form.editing > .actions > .btn.add,
+        .form.editing > .actions > .btn.clear {
+            display: none;
+        }
     .container > .item {
         display: inline-block;
         padding: 20px 20px 10px;

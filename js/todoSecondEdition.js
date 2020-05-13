@@ -9,10 +9,13 @@ const BTNremoveAll = DOMglobals.querySelector('.action.remove');
 
 const DOMform = DOMcontainer.querySelector('.form');
 const DOMtaskTextarea = DOMform.querySelector('textarea[name="task"]');
+const DOMswitchStatus = DOMform.querySelector('.switch');
 const DOMdeadlineInput = DOMform.querySelector('input[name="deadline"]');
 const DOMformActions = DOMform.querySelector('.actions');
 const DOMformAdd = DOMformActions.querySelector('.btn.add');
 const DOMformClear = DOMformActions.querySelector('.btn.clear');
+const DOMformSave = DOMformActions.querySelector('.btn.save');
+const DOMformCancel = DOMformActions.querySelector('.btn.cancel');
 
 let DOMitems = null;
 
@@ -31,6 +34,7 @@ function renderTodoItem( data ) {
             <div class="deadline">${data.deadline}</div>
             <div class="actions">
                 <div class="action remove">Remove</div>
+                <div class="action edit">Edit</div>
             </div>
         </div>`;
     
@@ -53,6 +57,11 @@ function renderTodoItem( data ) {
             }
 
             removeTodo( currentlyAddedItemIndex );
+        });
+
+    item.querySelector('.action.edit')
+        .addEventListener('click', () => {
+            DOMform.classList.add('editing');
         });
     return;
 }
@@ -134,6 +143,11 @@ function createNewTodo() {
     updateMemory();
 }
 
+function updateSwitch( event ) {
+    const value = event.target.dataset.option;
+    event.target.parentElement.setAttribute('data-selected', value);
+}
+
 /*******************************
     MEMORY MANAGEMENT
 *******************************/
@@ -178,3 +192,9 @@ DOMdeadlineInput.value = formatedDate( 86400000 );
 BTNremoveAll.addEventListener('click', removeAllTodos);
 
 DOMformAdd.addEventListener('click', createNewTodo);
+
+DOMswitchStatus.addEventListener('click', updateSwitch);
+
+DOMformCancel.addEventListener('click', () => {
+    DOMform.classList.remove('editing');
+})
