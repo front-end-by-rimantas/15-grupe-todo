@@ -150,7 +150,7 @@ body {
             .container > .item > .status.todo {
                 background-color: yellow;
             }
-            .container > .item > .status.in-progress {
+            .container > .item > .status.progress {
                 background-color: #36f;
             }
             .container > .item > .status.done {
@@ -178,6 +178,9 @@ body {
                 line-height: 20px;
                 text-decoration: underline;
                 cursor: pointer;
+            }
+            .container.editing .item > .actions {
+                visibility: hidden;
             }
 
 @media ( min-width: 500px ) {
