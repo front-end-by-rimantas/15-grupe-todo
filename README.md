@@ -3,7 +3,7 @@
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 [![HitCount](http://hits.dwyl.com/front-end-by-rimantas/15-grupe-todo.svg)](http://hits.dwyl.com/front-end-by-rimantas/15-grupe-todo)
 
-# Karim
+# Task management (a.k.a. TODO)
 ### 15 grupe - TODO project
 
 Key features:
